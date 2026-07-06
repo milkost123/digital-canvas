@@ -1,0 +1,136 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Google Sans Flex", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: var(--font-sans);
+  --font-byline: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-placeholder: var(--placeholder);
+}
+
+:root {
+  --radius: 1.25rem;
+
+  /* Brand */
+  --background: oklch(0.98 0.005 90);          /* warm off-white #FAFAF7 */
+  --surface: oklch(0.98 0.005 90);
+  --foreground: oklch(0.16 0.005 270);         /* near black */
+  --ink: oklch(0.12 0.01 270);                 /* hero card black */
+  --placeholder: oklch(0.93 0.003 90);         /* blank card surface */
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.005 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.005 270);
+
+  --primary: oklch(0.16 0.005 270);
+  --primary-foreground: oklch(0.98 0.005 90);
+  --secondary: oklch(0.95 0.005 90);
+  --secondary-foreground: oklch(0.16 0.005 270);
+  --muted: oklch(0.94 0.005 90);
+  --muted-foreground: oklch(0.45 0.01 270);
+  --accent: oklch(0.62 0.18 250);              /* muted electric blue */
+  --accent-foreground: oklch(0.98 0.005 90);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0.005 90);
+  --border: oklch(0.9 0.005 90);
+  --input: oklch(0.9 0.005 90);
+  --ring: oklch(0.62 0.18 250);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0;
+  }
+
+  body * {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-background);
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); letter-spacing: -0.8px; }
+  .font-mono { font-family: var(--font-mono); letter-spacing: -0.8px; }
+  .font-serif { font-family: var(--font-sans); letter-spacing: -0.8px; }
+  .font-byline { font-family: var(--font-byline); letter-spacing: 0; font-weight: 400; }
+  .label-mono {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    font-size: 0.7rem;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.animate-rise { animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+.group:hover .animate-marquee,
+.animate-marquee:hover { animation-play-state: paused; }
+
+.group:hover .squiggle-line {
+  stroke-dashoffset: 0;
+}
+
