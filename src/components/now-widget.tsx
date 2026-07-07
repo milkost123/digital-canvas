@@ -22,8 +22,8 @@ export function NowWidget() {
   return (
     <div className="space-y-5">
       <div className="relative w-full overflow-hidden rounded-[6px] aspect-[4/3] cursor-pointer group/headshot">
-        <img src="/content/About01_Static.png" alt="Milena Kostyukov" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover/headshot:opacity-0" />
-        <img src="/content/About01_Hover.png" alt="Milena Kostyukov" className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out group-hover/headshot:opacity-100" />
+        <img src="https://res.cloudinary.com/n72bnmrl/image/upload/v1783382943/About01_Static_klt8zn.png" alt="Milena Kostyukov" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover/headshot:opacity-0" />
+        <img src="https://res.cloudinary.com/n72bnmrl/image/upload/v1783382944/About01_Hover_u22inb.png" alt="Milena Kostyukov" className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out group-hover/headshot:opacity-100" />
       </div>
       <div className="space-y-2">
         <div className="label-mono text-[0.62rem] text-muted-foreground/60">About / Context</div>
