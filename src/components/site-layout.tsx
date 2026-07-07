@@ -70,9 +70,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       {/* Mobile top bar */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur lg:hidden">
         <div className="flex items-center justify-between px-5 py-4">
-          <Link to="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-            <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            <span className="font-display text-lg">Milena Kostyukov</span>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+            <span className="label-mono text-foreground font-semibold text-[13px]">Milena Kostyukov</span>
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -84,29 +83,42 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
 
         {/* Mobile dropdown menu */}
-        {mobileMenuOpen && (
-          <nav className="border-t border-border bg-background px-5 py-6">
-            <div className="flex flex-col gap-4">
-              {NAV.map((item) => {
-                const active = item.match.some((m) =>
-                  m === "/" ? pathname === "/" || pathname.startsWith("/work") : pathname.startsWith(m),
-                );
-                return (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`font-display text-xl transition-transform duration-300 hover:translate-x-1 ${
-                      active ? "text-ink" : "text-foreground"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </nav>
-        )}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.nav
+              key="mobile-nav"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden border-t border-border bg-background"
+            >
+              <div className="flex flex-col gap-4 px-5 py-6">
+                {NAV.map((item, i) => {
+                  const active = item.match.some((m) =>
+                    m === "/" ? pathname === "/" || pathname.startsWith("/work") : pathname.startsWith(m),
+                  );
+                  return (
+                    <motion.div
+                      key={item.to}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.06 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <Link
+                        to={item.to}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`font-display text-xl ${active ? "text-ink" : "text-foreground"}`}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </header>
 
       <div className="min-w-0 flex-1">
