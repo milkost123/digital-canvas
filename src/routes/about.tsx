@@ -18,10 +18,10 @@ export const Route = createFileRoute("/about")({
 });
 
 const experience = [
-  { year: "Oct 2025 —", role: "Sr. Designer, Digital", org: "Okta" },
-  { year: "Nov 2022 — Sep 2025", role: "Sr. Marketing Designer", org: "Studeo" },
-  { year: "Jun 2024 — May 2025", role: "Founding Designer", org: "Malleable" },
-  { year: "May 2021 — Jun 2023", role: "Lead Graphic Designer", org: "Food Over Drugs" },
+  { year: "Oct 2025 —", role: "Sr. Designer, Digital", org: "Okta", tag: "Enterprise SaaS" },
+  { year: "Nov 2022 — Sep 2025", role: "Sr. Marketing Designer", org: "Studeo", tag: "Startup SaaS" },
+  { year: "Jun 2024 — May 2025", role: "Founding Designer", org: "Malleable", tag: "Startup SaaS" },
+  { year: "May 2021 — Jun 2023", role: "Lead Graphic Designer", org: "Food Over Drugs", tag: "E-commerce" },
 ];
 
 const skills = [
@@ -73,7 +73,10 @@ function About() {
                   <li key={e.role} className="border-b border-border pb-4">
                     <div className="label-mono text-muted-foreground">{e.year}</div>
                     <div className="mt-1 font-display text-lg" style={{ letterSpacing: 0 }}>{e.role}</div>
-                    <div className="text-sm text-foreground/70">{e.org}</div>
+                    <div className="mt-1 flex items-center gap-2">
+                      <span className="text-sm text-foreground/70">{e.org}</span>
+                      <span className="label-mono text-[0.58rem] px-2 py-0.5 rounded-full border border-border text-muted-foreground/60">{e.tag}</span>
+                    </div>
                   </li>
                 ))}
               </ul>

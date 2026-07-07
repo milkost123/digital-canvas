@@ -18,15 +18,18 @@ export const Route = createFileRoute("/resume")({
   component: Resume,
 });
 
-function Row({ year, title, org, bullets }: { year: string; title: string; org: string; bullets?: string[] }) {
+function Row({ year, title, org, tag, bullets }: { year: string; title: string; org: string; tag?: string; bullets?: string[] }) {
   return (
     <div className="grid gap-3 border-b border-border py-6 sm:grid-cols-[160px_1fr] sm:gap-8">
       <div className="label-mono text-muted-foreground">{year}</div>
       <div>
         <div className="font-display text-lg" style={{ letterSpacing: "0" }}>{title}</div>
-        <div className="text-sm text-foreground/70">{org}</div>
+        <div className="mt-1 flex items-center gap-2">
+          <span className="text-sm text-foreground/70">{org}</span>
+          {tag && <span className="label-mono text-[0.58rem] px-2 py-0.5 rounded-full border border-border text-muted-foreground/60">{tag}</span>}
+        </div>
         {bullets && (
-          <ul className="mt-3 space-y-1.5 text-sm text-foreground/75">
+          <ul className="mt-3 space-y-1.5 text-lg text-foreground/75">
             {bullets.map((b) => <li key={b}>— {b}</li>)}
           </ul>
         )}
@@ -59,14 +62,17 @@ function Resume() {
               year="Oct 2025 — Present"
               title="Sr. Designer, Digital"
               org="Okta"
+              tag="Enterprise SaaS"
               bullets={[
                 "Leading animation and visual design across Okta.com and Auth0.com.",
+                "Built custom internal design tools with Claude Code and Lovable to speed up creative production, including a 3D animation tool that exports web-compatible motion graphics for brand icons and campaign visuals.",
               ]}
             />
             <Row
               year="Nov 2022 — Sep 2025"
               title="Sr. Marketing Designer"
               org="Studeo"
+              tag="Startup SaaS"
               bullets={[
                 "Drove creative across marketing and product, creating animations, graphics, and visual design for web, social, email, and campaigns.",
               ]}
@@ -75,6 +81,7 @@ function Resume() {
               year="Jun 2024 — May 2025"
               title="Founding Designer"
               org="Malleable"
+              tag="Startup SaaS"
               bullets={[
                 "Built the visual foundation for an innovative sales technology platform.",
                 "Directed design efforts, created user-friendly experiences in the app, and developed a consistent look across digital channels.",
@@ -85,6 +92,7 @@ function Resume() {
               year="May 2021 — Jun 2023"
               title="Lead Graphic Designer"
               org="Food Over Drugs"
+              tag="E-commerce"
               bullets={[
                 "Conducted brand research, communication strategies, designing and executing Shopify e-commerce pages, email marketing, presentation design, and social media.",
               ]}

@@ -56,7 +56,7 @@ function AboutPreview() {
           <p className="text-lg leading-relaxed text-foreground/85 sm:text-xl max-w-2xl">
             I'm Milena — a designer based in Toronto. I work with tech brands across marketing: ads, websites, product videos, you name it. I'm drawn to the space between strategy and craft. The details that add delight and elegance, making a brand feel more expressive and memorable to the people experiencing it. <br /><br />When I'm not designing, you can find me planning my next hike, or buying the 50th cat toy for my cat{" "}
             <span className="relative inline-block group/merlin">
-              <strong className="font-semibold">Merlin</strong>
+              <span>Merlin</span>
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-20 pointer-events-none opacity-0 scale-90 transition-all duration-200 ease-out group-hover/merlin:opacity-100 group-hover/merlin:scale-100 rotate-[5deg]">
                 <div className="w-28 h-28 rounded-xl overflow-hidden shadow-lg">
                   <img src="https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382955/merlin_hover_inrjoz.png" alt="Merlin" className="w-full h-full object-cover" />
@@ -92,7 +92,7 @@ function AboutPreview() {
             </motion.div>
             {cursor.card === 0 && (
               <motion.div
-                className="absolute z-20 label-mono text-[0.65rem] bg-ink text-background px-3 py-1.5 rounded-full pointer-events-none whitespace-nowrap"
+                className="absolute z-20 hidden sm:block label-mono text-[0.65rem] bg-ink text-background px-3 py-1.5 rounded-full pointer-events-none whitespace-nowrap"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
@@ -127,7 +127,7 @@ function AboutPreview() {
             </motion.div>
             {cursor.card === 1 && (
               <motion.div
-                className="absolute z-20 label-mono text-[0.65rem] bg-ink text-background px-3 py-1.5 rounded-full pointer-events-none whitespace-nowrap"
+                className="absolute z-20 hidden sm:block label-mono text-[0.65rem] bg-ink text-background px-3 py-1.5 rounded-full pointer-events-none whitespace-nowrap"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
