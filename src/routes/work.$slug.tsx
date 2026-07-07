@@ -16,9 +16,9 @@ export const Route = createFileRoute("/work/$slug")({
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        { property: "og:image", content: "/content/ShareCard.png" },
+        { property: "og:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/v1783382966/ShareCard_moshvp.png" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:image", content: "/content/ShareCard.png" },
+        { name: "twitter:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/v1783382966/ShareCard_moshvp.png" },
       ],
     };
   },
