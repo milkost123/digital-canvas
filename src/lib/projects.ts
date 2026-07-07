@@ -66,7 +66,7 @@ export const projects: Project[] = [
     slug: "okta-web-motion",
     heroVideo: "https://res.cloudinary.com/n72bnmrl/video/upload/v1783383026/Okta_Hero01_qzfoqe.mp4",
     title: "Identity, secured",
-    tagline: "Animating Okta's web experience, from icons to interactive product graphics",
+    tagline: "Defining Okta's motion language across web, product graphics, and the Oktane conference site",
     tags: ["Web & Motion Design"],
     role: "Sr. Digital Designer",
     tools: "Figma, After Effects, Adobe Experience Manager, Claude Code, Lovable",
@@ -81,7 +81,7 @@ export const projects: Project[] = [
       { value: "1", label: "unified motion language" },
     ],
     narrative:
-      "Animating Okta's web experience, from icons to interactive product graphics.",
+      "Defining Okta's motion language across web, product graphics, and the Oktane conference site.",
     sections: [
       {
         heading: "Oktane 2026",
@@ -170,7 +170,7 @@ export const projects: Project[] = [
   {
     slug: "malleable-founding",
     title: "Co-pilot for sales teams",
-    tagline: "Founding designer shaping Malleable's product, web and brand from the ground up",
+    tagline: "Built Malleable's entire design foundation in under a year: product, brand, and web from zero",
     tags: ["Founding Design"],
     role: "Founding Designer — product, web, brand",
     tools: "Figma, Framer, After Effects",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
       { value: "12", label: "enterprise pilots" },
     ],
     narrative:
-      "Founding designer shaping Malleable's product, web and brand from the ground up.",
+      "Built Malleable's entire design foundation in under a year: product, brand, and web from zero.",
     sections: [
       {
         heading: "Product design",
