@@ -14,7 +14,6 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.06, ease: [0.2, 0.8, 0.2, 1] }}
-      whileHover="hover"
     >
       <Link to="/work/$slug" params={{ slug: project.slug }} className="group block">
         <div
@@ -45,7 +44,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           </div>
 
           {/* ── Desktop layout: absolute positioned ── */}
-          <div className="hidden xl:block">
+          <motion.div className="hidden xl:block" whileHover="hover">
             {/* Top label row */}
             <div className="absolute top-0 left-0 right-0 flex items-center p-10 z-10">
               <div className="relative overflow-hidden h-[0.8rem]">
@@ -86,7 +85,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
                 />
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
       </Link>
     </motion.div>
