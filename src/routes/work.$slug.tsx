@@ -43,6 +43,22 @@ export const Route = createFileRoute("/work/$slug")({
   ),
 });
 
+function FadeIn({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 28 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 function FadeInSection({ children, className }: { children: ReactNode; className?: string }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -132,38 +148,44 @@ function WorkDetail() {
         </div>
 
         {/* Title + subhead */}
-        <header className="mt-8">
-          <h1 className="max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            {project.title}
-          </h1>
-          <p className="mt-4 text-lg leading-relaxed text-foreground/60 sm:text-xl">
-            {project.narrative}
-          </p>
-        </header>
+        <FadeIn delay={0.05}>
+          <header className="mt-8">
+            <h1 className="max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              {project.title}
+            </h1>
+            <p className="mt-4 text-lg leading-relaxed text-foreground/60 sm:text-xl">
+              {project.narrative}
+            </p>
+          </header>
+        </FadeIn>
 
         {/* Hero */}
-        {project.heroVideo ? (
-          <video src={project.heroVideo} className="mt-10 w-full h-auto rounded-[6px]" autoPlay muted loop playsInline preload="auto" />
-        ) : project.heroImage ? (
-          <img src={project.heroImage} alt={project.title} className="mt-10 w-full h-auto rounded-[6px]" />
-        ) : (
-          <div className="mt-10 aspect-[16/8] w-full rounded-[6px] bg-placeholder" />
-        )}
+        <FadeIn delay={0.12}>
+          {project.heroVideo ? (
+            <video src={project.heroVideo} className="mt-10 w-full h-auto rounded-[6px]" autoPlay muted loop playsInline preload="auto" />
+          ) : project.heroImage ? (
+            <img src={project.heroImage} alt={project.title} className="mt-10 w-full h-auto rounded-[6px]" />
+          ) : (
+            <div className="mt-10 aspect-[16/8] w-full rounded-[6px] bg-placeholder" />
+          )}
+        </FadeIn>
 
         {/* Meta columns */}
-        <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-8 sm:grid-cols-4">
-          {[
-            { label: "Role", value: project.role },
-            { label: "Team", value: project.team },
-            { label: "Timeline", value: project.timeline },
-            ...(project.tools ? [{ label: "Tools", value: project.tools }] : []),
-          ].map((m) => (
-            <div key={m.label}>
-              <div className="label-mono text-ink">{m.label}</div>
-              <div className="mt-2 text-base leading-relaxed text-foreground/85">{m.value}</div>
-            </div>
-          ))}
-        </div>
+        <FadeIn delay={0.08}>
+          <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-8 sm:grid-cols-4">
+            {[
+              { label: "Role", value: project.role },
+              { label: "Team", value: project.team },
+              { label: "Timeline", value: project.timeline },
+              ...(project.tools ? [{ label: "Tools", value: project.tools }] : []),
+            ].map((m) => (
+              <div key={m.label}>
+                <div className="label-mono text-ink">{m.label}</div>
+                <div className="mt-2 text-base leading-relaxed text-foreground/85">{m.value}</div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
 
         {/* Stat groups */}
         {project.statGroups && !project.hideStatGroups && (
@@ -322,6 +344,7 @@ function WorkDetail() {
         </div>
 
         {/* Next */}
+        <FadeIn>
         <div className="mt-28 border-t border-border pt-10">
           <span className="label-mono text-muted-foreground">Next project</span>
           <Link
@@ -342,6 +365,7 @@ function WorkDetail() {
             ))}
           </div>
         </div>
+        </FadeIn>
       </article>
     </SiteLayout>
   );

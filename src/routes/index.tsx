@@ -157,7 +157,7 @@ function Index() {
             <span>Currently at <a href="https://www.okta.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Okta</a></span>
           </div>
           <motion.h2
-            className="font-display text-[2.7rem] leading-[1.05] tracking-tight sm:text-[3.4rem] lg:text-[4rem]"
+            className="font-display text-4xl leading-[1.05] tracking-tight sm:text-[3.4rem] lg:text-[4rem]"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
