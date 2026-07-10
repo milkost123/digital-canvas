@@ -12,9 +12,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "A digital designer with a knack for motion and interaction. Currently at Okta." },
       { property: "og:title", content: "Milena Kostyukov — Digital Designer" },
       { property: "og:description", content: "A digital designer with a knack for motion and interaction." },
-      { property: "og:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+      { property: "og:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+      { name: "twitter:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
     ],
   }),
   component: Index,
@@ -59,7 +59,7 @@ function AboutPreview() {
               <span>Merlin</span>
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-20 pointer-events-none opacity-0 scale-90 transition-all duration-200 ease-out group-hover/merlin:opacity-100 group-hover/merlin:scale-100 rotate-[5deg]">
                 <div className="w-28 h-28 rounded-xl overflow-hidden shadow-lg">
-                  <img src="https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382955/merlin_hover_inrjoz.png" alt="Merlin" className="w-full h-full object-cover" />
+                  <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661562/portfolio/merlin_hover.png" alt="Merlin" className="w-full h-full object-cover" />
                 </div>
               </div>
             </span>
@@ -84,10 +84,10 @@ function AboutPreview() {
               whileHover={{ scale: 1.02 }}
             >
               <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
-                <img src="https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382963/About02_Static_nqtf9b.png" alt="About" className="w-full h-full object-cover" />
+                <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661560/portfolio/About02_Static.png" alt="About" className="w-full h-full object-cover" />
               </div>
               <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
-                <img src="https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382956/About02_Hover_ubz2gq.png" alt="About" className="w-full h-full object-cover" />
+                <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661557/portfolio/About02_Hover.png" alt="About" className="w-full h-full object-cover" />
               </div>
             </motion.div>
             {cursor.card === 0 && (
@@ -119,10 +119,10 @@ function AboutPreview() {
               whileHover={{ scale: 1.02 }}
             >
               <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
-                <img src="https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382943/About01_Static_klt8zn.png" alt="About" className="w-full h-full object-cover" />
+                <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661550/portfolio/About01_Static.png" alt="About" className="w-full h-full object-cover" />
               </div>
               <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
-                <img src="https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382944/About01_Hover_u22inb.png" alt="About" className="w-full h-full object-cover" />
+                <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661548/portfolio/About01_Hover.png" alt="About" className="w-full h-full object-cover" />
               </div>
             </motion.div>
             {cursor.card === 1 && (

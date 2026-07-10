@@ -10,9 +10,9 @@ export const Route = createFileRoute("/resume")({
       { name: "description", content: "Resume of Milena Kostyukov." },
       { property: "og:title", content: "Resume — Milena Kostyukov" },
       { property: "og:description", content: "Resume of Milena Kostyukov." },
-      { property: "og:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+      { property: "og:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+      { name: "twitter:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
     ],
   }),
   component: Resume,
@@ -51,12 +51,12 @@ function Resume() {
           <div>
             <span className="label-mono text-muted-foreground">Resume</span>
             <h1 className="mt-3 font-display text-5xl font-medium tracking-tight sm:text-6xl">Milena Kostyukov</h1>
-            <p className="mt-3 text-foreground/70">Digital and Brand Designer</p>
+            <p className="mt-1 label-mono text-foreground/70">Digital and Brand Designer</p>
           </div>
         </header>
 
         <section className="mt-14">
-          <h2 className="label-mono text-accent">Experience</h2>
+          <h2 className="label-mono text-ink">Experience</h2>
           <div className="mt-4">
             <Row
               year="Oct 2025 — Present"
@@ -64,7 +64,7 @@ function Resume() {
               org="Okta"
               tag="Enterprise SaaS"
               bullets={[
-                "Leading animation and visual design across Okta.com and Auth0.com.",
+                "Leading motion and interaction design across Okta and Auth0's web experiences, translating product UI into animated moments for brand, product, and campaign touchpoints.",
                 "Built custom internal design tools with Claude Code and Lovable to speed up creative production, including a 3D animation tool that exports web-compatible motion graphics for brand icons and campaign visuals.",
               ]}
             />
@@ -74,7 +74,8 @@ function Resume() {
               org="Studeo"
               tag="Startup SaaS"
               bullets={[
-                "Drove creative across marketing and product, creating animations, graphics, and visual design for web, social, email, and campaigns.",
+                "Responsible for the visual ideation and execution of dynamic performance ads, crafting storyboards and delivering high-quality animated creative for effective MQL generation.",
+                "Directed and produced over 4 product reels, one of which became the site's most-clicked element, engaging 34% of 22.4K visitors and driving awareness and lead generation across web and paid channels.",
               ]}
             />
             <Row
@@ -97,6 +98,21 @@ function Resume() {
                 "Conducted brand research, communication strategies, designing and executing Shopify e-commerce pages, email marketing, presentation design, and social media.",
               ]}
             />
+          </div>
+        </section>
+
+        <section className="mt-14">
+          <h2 className="label-mono text-ink">Tools and Skills</h2>
+          <div className="mt-4 grid grid-cols-3 gap-x-8 gap-y-2 text-lg text-foreground/85">
+            {[
+              "Adobe Creative Suite", "Ad Design", "Web Design",
+              "Motion Design", "A/B Testing", "Animation",
+              "Figma", "Claude Code / Lovable", "Copywriting",
+              "Email Marketing", "Brand Identity", "Art Direction",
+              "HTML/CSS", "Paid Social (Meta, LinkedIn)", "Design Systems",
+            ].map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
           </div>
         </section>
 

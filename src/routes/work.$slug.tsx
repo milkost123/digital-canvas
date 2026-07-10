@@ -16,9 +16,9 @@ export const Route = createFileRoute("/work/$slug")({
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        { property: "og:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+        { property: "og:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+        { name: "twitter:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
       ],
     };
   },
@@ -238,7 +238,7 @@ function WorkDetail() {
               )}
               {/* Copy + section image: side-by-side on desktop, copy→image on mobile */}
               {!s.noCols && <div className="grid gap-6 lg:grid-cols-[1.7fr_1.7fr] lg:items-center lg:gap-16">
-                <div className={`order-last ${i % 2 === 1 ? "lg:order-2" : "lg:order-none"}`}>
+                <div className={`order-last ${(s.flipCols ? i % 2 === 0 : i % 2 === 1) ? "lg:order-2" : "lg:order-none"}`}>
                   {s.cardPreview ? (
                     <CardPreview project={project} />
                   ) : (
@@ -253,7 +253,7 @@ function WorkDetail() {
                     </div>
                   )}
                 </div>
-                <div className={`order-first ${i % 2 === 1 ? "lg:order-1" : "lg:order-none"}`}>
+                <div className={`order-first ${(s.flipCols ? i % 2 === 0 : i % 2 === 1) ? "lg:order-1" : "lg:order-none"}`}>
                   <h3 className="font-display text-2xl tracking-tight sm:text-3xl">{s.heading}</h3>
                   {s.body.split("\n\n").map((para, pi) => (
                     <p key={pi} className="mt-4 text-lg leading-relaxed text-foreground/80">{para}</p>
@@ -282,32 +282,32 @@ function WorkDetail() {
               {/* Break media */}
               {!s.breakGrid3 && s.breakSplit ? (
                 <div className="mt-4 space-y-4">
-                  {/* Row 1: stacks on mobile, 40/60 split on desktop */}
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-[4fr_6fr]">
-                    <div className="aspect-video overflow-hidden rounded-[6px] sm:aspect-auto sm:self-stretch">
+                  {/* Row 1: stacks on mobile, 30/70 split on desktop */}
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-[30fr_70fr] sm:items-stretch">
+                    <div className="aspect-video overflow-hidden rounded-[6px] sm:aspect-auto">
                       {s.breakVideo
                         ? <video src={s.breakVideo} className="w-full h-full object-cover block" autoPlay muted loop playsInline preload="metadata" />
                         : s.breakImage
                           ? <img src={s.breakImage} alt="" className="w-full h-full object-cover block" />
                           : <div className="w-full h-full bg-placeholder" />}
                     </div>
-                    <div className="self-start aspect-video overflow-hidden rounded-[6px]">
+                    <div className="aspect-video overflow-hidden rounded-[6px]">
                       {s.breakVideo2
-                        ? <video src={s.breakVideo2} className="w-full h-full object-cover block" autoPlay muted loop playsInline preload="metadata" />
+                        ? <video src={s.breakVideo2} className="w-full h-full aspect-video object-cover block" autoPlay muted loop playsInline preload="metadata" />
                         : <div className="w-full h-full bg-placeholder" />}
                     </div>
                   </div>
-                  {/* Row 2: stacks on mobile, 55/45 split on desktop */}
+                  {/* Row 2: stacks on mobile, 70/30 split on desktop */}
                   {(s.breakVideo3 || s.breakImage3 || s.breakImage4 || (s.breakPlaceholders && s.breakPlaceholders >= 2)) && (
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-[55fr_45fr]">
-                      <div className="self-start aspect-video overflow-hidden rounded-[6px]">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-[70fr_30fr] sm:items-stretch">
+                      <div className="aspect-video overflow-hidden rounded-[6px]">
                         {s.breakVideo3
-                          ? <video src={s.breakVideo3} className="w-full h-full object-cover block" autoPlay muted loop playsInline preload="metadata" />
+                          ? <video src={s.breakVideo3} className="w-full h-full aspect-video object-cover block" autoPlay muted loop playsInline preload="metadata" />
                           : s.breakImage3
                             ? <img src={s.breakImage3} alt="" className="w-full h-full object-cover block" />
                             : <div className="w-full h-full bg-placeholder" />}
                       </div>
-                      <div className="aspect-video overflow-hidden rounded-[6px] sm:aspect-auto sm:self-stretch">
+                      <div className="aspect-video overflow-hidden rounded-[6px] sm:aspect-auto">
                         {s.breakImage4
                           ? <img src={s.breakImage4} alt="" className="w-full h-full object-cover block" />
                           : <div className="w-full h-full bg-placeholder" />}
@@ -317,7 +317,21 @@ function WorkDetail() {
                 </div>
               ) : (
                 <>
-                  {!s.breakTop && (s.breakImage || s.breakVideo) && (
+                  {s.breakSideBySide && (
+                    <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-[70fr_30fr] sm:items-stretch">
+                      <div className="overflow-hidden rounded-[6px]">
+                        {s.breakImage
+                          ? <img src={s.breakImage} alt="" className="w-full h-auto block" />
+                          : <div className="aspect-[4/3] w-full bg-placeholder" />}
+                      </div>
+                      <div className="overflow-hidden rounded-[6px] sm:self-stretch">
+                        {s.breakImage2
+                          ? <img src={s.breakImage2} alt="" className="w-full h-full object-cover block" />
+                          : <div className="w-full h-full bg-placeholder" />}
+                      </div>
+                    </div>
+                  )}
+                  {!s.breakSideBySide && !s.breakTop && (s.breakImage || s.breakVideo) && (
                     <div className="mt-4 overflow-hidden rounded-[6px]">
                       {s.breakVideo
                         ? <video src={s.breakVideo} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
@@ -329,7 +343,7 @@ function WorkDetail() {
                       <video src={s.breakVideo2} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
                     </div>
                   )}
-                  {s.breakImage2 && (
+                  {!s.breakSideBySide && s.breakImage2 && (
                     <div className="mt-4 overflow-hidden rounded-[6px]">
                       <img src={s.breakImage2} alt="" className="w-full h-auto block" />
                     </div>

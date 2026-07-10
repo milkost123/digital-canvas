@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { motion } from "motion/react";
 
@@ -9,9 +9,9 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "About Milena Kostyukov — digital designer working in motion and interaction." },
       { property: "og:title", content: "About — Milena Kostyukov" },
       { property: "og:description", content: "About Milena Kostyukov — digital designer working in motion and interaction." },
-      { property: "og:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+      { property: "og:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://res.cloudinary.com/n72bnmrl/image/upload/f_auto,q_auto/v1783382966/ShareCard_moshvp.png" },
+      { name: "twitter:image", content: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661571/portfolio/ShareCard.png" },
     ],
   }),
   component: About,
@@ -43,20 +43,17 @@ function About() {
         <header>
           <span className="label-mono text-muted-foreground">About</span>
           <h1 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            A designer working at the seam of motion, interaction, and craft.
+            A designer who moves between brand, motion, and the experiences that carry both into the world.
           </h1>
         </header>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
           <div className="space-y-6 text-lg leading-relaxed text-foreground/85">
             <p>
-              I'm Milena — a designer based in Toronto. I work with tech brands across marketing: ads,
-              websites, product videos, you name it. I'm drawn to the space between strategy and craft.
+              I'm Milena, a brand and digital designer with a soft spot for motion. I've spent the past 5 years moving between startups and larger teams, building brand systems, animating product stories, and designing the ads, emails, and web experiences that carry a brand into the world. I believe that good design is a conversation, not a monologue. It listens to how people actually respond and adjusts.
             </p>
             <p>
-              Most of my work lives in the gap between static design and engineering. I prototype heavily,
-              animate intentionally, and try to leave every product I touch a little easier to use than I
-              found it.
+              When I'm not staring at my screen, I'm probably either planning my next hike, logging my step count, concocting a new Ninja Creami protein ice cream recipe or spending time with my cat, Merlin.
             </p>
             <div className="pt-2 flex flex-wrap gap-2">
               {skills.map((s) => (
@@ -80,6 +77,12 @@ function About() {
                   </li>
                 ))}
               </ul>
+              <Link
+                to="/resume"
+                className="mt-5 inline-flex items-center gap-1.5 label-mono text-ink border border-border rounded-full px-4 py-2 hover:bg-ink hover:text-background transition-colors"
+              >
+                View full resume
+              </Link>
             </section>
 
           </aside>
