@@ -77,16 +77,16 @@ function AboutPreview() {
             onMouseLeave={onMouseLeave}
           >
             <motion.div
-              className="relative w-full h-full rounded-2xl border border-border"
+              className="relative w-full h-full rounded-[12px]"
               style={{ transformStyle: "preserve-3d" }}
               animate={{ rotateY: flippedImage === 0 ? 180 : 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
+              <div className="absolute inset-0 rounded-[12px] overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
                 <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661560/portfolio/About02_Static.png" alt="About" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
+              <div className="absolute inset-0 rounded-[12px] overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
                 <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661557/portfolio/About02_Hover.png" alt="About" className="w-full h-full object-cover" />
               </div>
             </motion.div>
@@ -112,16 +112,16 @@ function AboutPreview() {
             onMouseLeave={onMouseLeave}
           >
             <motion.div
-              className="relative w-full h-full rounded-2xl border border-border"
+              className="relative w-full h-full rounded-[12px]"
               style={{ transformStyle: "preserve-3d" }}
               animate={{ rotateY: flippedImage === 1 ? 180 : 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
+              <div className="absolute inset-0 rounded-[12px] overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}>
                 <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661550/portfolio/About01_Static.png" alt="About" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
+              <div className="absolute inset-0 rounded-[12px] overflow-hidden" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
                 <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661548/portfolio/About01_Hover.png" alt="About" className="w-full h-full object-cover" />
               </div>
             </motion.div>
@@ -149,13 +149,6 @@ function Index() {
       <div className="mx-auto max-w-6xl px-4 pb-24 pt-12 lg:px-6 lg:pt-20 lg:pb-8">
         {/* Intro */}
         <section className="mb-14 animate-rise">
-          <div className="mb-6 flex items-center gap-2 label-mono text-muted-foreground/70">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-black opacity-75"></span>
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-black"></span>
-            </span>
-            <span>Currently at <a href="https://www.okta.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Okta</a></span>
-          </div>
           <motion.h2
             className="font-display text-4xl leading-[1.05] tracking-tight sm:text-[3.4rem] lg:text-[4rem]"
             initial={{ opacity: 0, y: 24 }}

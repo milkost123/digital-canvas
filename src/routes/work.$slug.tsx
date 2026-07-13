@@ -95,7 +95,7 @@ function AnimatedStat({ value, index }: { value: string; index: number }) {
 function CardPreview({ project }: { project: import("@/lib/projects").Project }) {
   return (
     <motion.div
-      className="relative overflow-hidden rounded-[6px] aspect-[4/3] cursor-pointer"
+      className="relative overflow-hidden rounded-[12px] aspect-[4/3] cursor-pointer"
       style={{
         backgroundColor: project.bg,
         backgroundImage: project.cardBg ? `url(${project.cardBg})` : undefined,
@@ -162,11 +162,11 @@ function WorkDetail() {
         {/* Hero */}
         <FadeIn delay={0.12}>
           {project.heroVideo ? (
-            <video src={project.heroVideo} className="mt-10 w-full h-auto rounded-[6px]" autoPlay muted loop playsInline preload="auto" />
+            <video src={project.heroVideo} className="mt-10 w-full h-auto rounded-[12px]" autoPlay muted loop playsInline preload="auto" />
           ) : project.heroImage ? (
-            <img src={project.heroImage} alt={project.title} className="mt-10 w-full h-auto rounded-[6px]" />
+            <img src={project.heroImage} alt={project.title} className="mt-10 w-full h-auto rounded-[12px]" />
           ) : (
-            <div className="mt-10 aspect-[16/8] w-full rounded-[6px] bg-placeholder" />
+            <div className="mt-10 aspect-[16/8] w-full rounded-[12px] bg-placeholder" />
           )}
         </FadeIn>
 
@@ -221,16 +221,25 @@ function WorkDetail() {
                   {s.body.split("\n\n").map((para, pi) => (
                     <p key={pi} className="mt-4 text-lg leading-relaxed text-foreground/80">{para}</p>
                   ))}
-                  {s.link && (
-                    <a href={s.link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">
-                      {s.linkLabel ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
+                  {(s.link || s.link2) && (
+                    <div className="mt-4 flex flex-row gap-2">
+                      {s.link && (
+                        s.link.startsWith("/")
+                          ? <Link to={s.link} className="inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">{s.linkLabel ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" /></Link>
+                          : <a href={s.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">{s.linkLabel ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" /></a>
+                      )}
+                      {s.link2 && (
+                        <a href={s.link2} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">
+                          {s.linkLabel2 ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               ) : null}
               {/* Break media above col layout when breakTop is set */}
               {s.breakTop && (s.breakImage || s.breakVideo) && (
-                <div className="mb-6 overflow-hidden rounded-[6px]">
+                <div className="mb-6 overflow-hidden rounded-[12px]">
                   {s.breakVideo
                     ? <video src={s.breakVideo} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
                     : <img src={s.breakImage} alt="" className="w-full h-auto block" />}
@@ -242,7 +251,7 @@ function WorkDetail() {
                   {s.cardPreview ? (
                     <CardPreview project={project} />
                   ) : (
-                    <div className="overflow-hidden rounded-[6px]">
+                    <div className="overflow-hidden rounded-[12px]">
                       {s.video ? (
                         <video src={s.video} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
                       ) : s.image ? (
@@ -258,10 +267,19 @@ function WorkDetail() {
                   {s.body.split("\n\n").map((para, pi) => (
                     <p key={pi} className="mt-4 text-lg leading-relaxed text-foreground/80">{para}</p>
                   ))}
-                  {s.link && (
-                    <a href={s.link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">
-                      {s.linkLabel ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
+                  {(s.link || s.link2) && (
+                    <div className="mt-4 flex flex-row gap-2">
+                      {s.link && (
+                        s.link.startsWith("/")
+                          ? <Link to={s.link} className="inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">{s.linkLabel ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" /></Link>
+                          : <a href={s.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">{s.linkLabel ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" /></a>
+                      )}
+                      {s.link2 && (
+                        <a href={s.link2} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 label-mono text-ink hover:opacity-70 transition-opacity">
+                          {s.linkLabel2 ?? "View"} <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>}
@@ -269,11 +287,11 @@ function WorkDetail() {
               {s.breakGrid3 && (
                 <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-stretch">
                   <div className="flex flex-col gap-4">
-                    {s.breakImage && <div className="overflow-hidden rounded-[6px]"><img src={s.breakImage} alt="" className="w-full h-auto block" /></div>}
-                    {s.breakImage2 && <div className="overflow-hidden rounded-[6px]"><img src={s.breakImage2} alt="" className="w-full h-auto block" /></div>}
+                    {s.breakImage && <div className="overflow-hidden rounded-[12px]"><img src={s.breakImage} alt="" className="w-full h-auto block" /></div>}
+                    {s.breakImage2 && <div className="overflow-hidden rounded-[12px]"><img src={s.breakImage2} alt="" className="w-full h-auto block" /></div>}
                   </div>
                   {s.breakImage3 && (
-                    <div className="overflow-hidden rounded-[6px]">
+                    <div className="overflow-hidden rounded-[12px]">
                       <img src={s.breakImage3} alt="" className="w-full h-full object-cover block" />
                     </div>
                   )}
@@ -284,14 +302,14 @@ function WorkDetail() {
                 <div className="mt-4 space-y-4">
                   {/* Row 1: stacks on mobile, 30/70 split on desktop */}
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-[30fr_70fr] sm:items-stretch">
-                    <div className="aspect-video overflow-hidden rounded-[6px] sm:aspect-auto">
+                    <div className="aspect-video overflow-hidden rounded-[12px] sm:aspect-auto">
                       {s.breakVideo
                         ? <video src={s.breakVideo} className="w-full h-full object-cover block" autoPlay muted loop playsInline preload="metadata" />
                         : s.breakImage
                           ? <img src={s.breakImage} alt="" className="w-full h-full object-cover block" />
                           : <div className="w-full h-full bg-placeholder" />}
                     </div>
-                    <div className="aspect-video overflow-hidden rounded-[6px]">
+                    <div className="aspect-video overflow-hidden rounded-[12px]">
                       {s.breakVideo2
                         ? <video src={s.breakVideo2} className="w-full h-full aspect-video object-cover block" autoPlay muted loop playsInline preload="metadata" />
                         : <div className="w-full h-full bg-placeholder" />}
@@ -300,14 +318,14 @@ function WorkDetail() {
                   {/* Row 2: stacks on mobile, 70/30 split on desktop */}
                   {(s.breakVideo3 || s.breakImage3 || s.breakImage4 || (s.breakPlaceholders && s.breakPlaceholders >= 2)) && (
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-[70fr_30fr] sm:items-stretch">
-                      <div className="aspect-video overflow-hidden rounded-[6px]">
+                      <div className="aspect-video overflow-hidden rounded-[12px]">
                         {s.breakVideo3
                           ? <video src={s.breakVideo3} className="w-full h-full aspect-video object-cover block" autoPlay muted loop playsInline preload="metadata" />
                           : s.breakImage3
                             ? <img src={s.breakImage3} alt="" className="w-full h-full object-cover block" />
                             : <div className="w-full h-full bg-placeholder" />}
                       </div>
-                      <div className="aspect-video overflow-hidden rounded-[6px] sm:aspect-auto">
+                      <div className="aspect-video overflow-hidden rounded-[12px] sm:aspect-auto">
                         {s.breakImage4
                           ? <img src={s.breakImage4} alt="" className="w-full h-full object-cover block" />
                           : <div className="w-full h-full bg-placeholder" />}
@@ -318,13 +336,13 @@ function WorkDetail() {
               ) : (
                 <>
                   {s.breakSideBySide && (
-                    <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-[70fr_30fr] sm:items-stretch">
-                      <div className="overflow-hidden rounded-[6px]">
+                    <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-[65fr_35fr] sm:items-stretch">
+                      <div className="overflow-hidden rounded-[12px]">
                         {s.breakImage
                           ? <img src={s.breakImage} alt="" className="w-full h-auto block" />
                           : <div className="aspect-[4/3] w-full bg-placeholder" />}
                       </div>
-                      <div className="overflow-hidden rounded-[6px] sm:self-stretch">
+                      <div className="overflow-hidden rounded-[12px] sm:self-stretch">
                         {s.breakImage2
                           ? <img src={s.breakImage2} alt="" className="w-full h-full object-cover block" />
                           : <div className="w-full h-full bg-placeholder" />}
@@ -332,24 +350,29 @@ function WorkDetail() {
                     </div>
                   )}
                   {!s.breakSideBySide && !s.breakTop && (s.breakImage || s.breakVideo) && (
-                    <div className="mt-4 overflow-hidden rounded-[6px]">
-                      {s.breakVideo
-                        ? <video src={s.breakVideo} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
-                        : <img src={s.breakImage} alt="" className="w-full h-auto block" />}
+                    <div className="mt-4">
+                      <div className="overflow-hidden rounded-[12px]">
+                        {s.breakVideo
+                          ? <video src={s.breakVideo} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
+                          : <img src={s.breakImage} alt="" className="w-full h-auto block" />}
+                      </div>
+                      {s.breakImageCaption && (
+                        <p className="mt-2 label-mono text-foreground/50">{s.breakImageCaption}</p>
+                      )}
                     </div>
                   )}
                   {s.breakVideo2 && (
-                    <div className="mt-4 overflow-hidden rounded-[6px]">
+                    <div className="mt-4 overflow-hidden rounded-[12px]">
                       <video src={s.breakVideo2} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
                     </div>
                   )}
                   {!s.breakSideBySide && s.breakImage2 && (
-                    <div className="mt-4 overflow-hidden rounded-[6px]">
+                    <div className="mt-4 overflow-hidden rounded-[12px]">
                       <img src={s.breakImage2} alt="" className="w-full h-auto block" />
                     </div>
                   )}
                   {s.breakPlaceholders && Array.from({ length: s.breakPlaceholders }).map((_, pi) => (
-                    <div key={pi} className="mt-4 aspect-[16/8] w-full rounded-[6px] bg-placeholder" />
+                    <div key={pi} className="mt-4 aspect-[16/8] w-full rounded-[12px] bg-placeholder" />
                   ))}
                 </>
               )}
