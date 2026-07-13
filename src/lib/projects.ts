@@ -19,7 +19,7 @@ export type Project = {
   statGroups?: { title: string; stats: { value: string; label: string }[] }[];
   hideStatGroups?: boolean;
   narrative: string;
-  sections: { heading: string; body: string; link?: string; linkLabel?: string; image?: string; video?: string; cardPreview?: boolean; flipCols?: boolean; breakImage?: string; breakImage2?: string; breakVideo?: string; breakVideo2?: string; breakVideo3?: string; breakImage3?: string; breakImage4?: string; breakPlaceholders?: number; breakSplit?: boolean; breakSideBySide?: boolean; breakGrid3?: boolean; breakTop?: boolean; noCols?: boolean }[];
+  sections: { heading: string; body: string; link?: string; linkLabel?: string; link2?: string; linkLabel2?: string; image?: string; imageCaption?: string; video?: string; cardPreview?: boolean; flipCols?: boolean; breakImage?: string; breakImageCaption?: string; breakImage2?: string; breakVideo?: string; breakVideo2?: string; breakVideo3?: string; breakImage3?: string; breakImage4?: string; breakPlaceholders?: number; breakSplit?: boolean; breakSideBySide?: boolean; breakGrid3?: boolean; breakTop?: boolean; noCols?: boolean }[];
 };
 
 export const projects: Project[] = [
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Overview",
-        body: "As a web designer at Auth0, I build and animate pages across the site, design layouts, add motion, and create interactive moments that make the product experience feel alive. I also contribute to Auth0's design system, helping shape components as the brand moves in a more creative direction.",
+        body: "As the lead web designer at Auth0, I build and animate pages across the site, design layouts, add motion, and create interactive moments that make the product experience feel alive. I also contribute to Auth0's design system, helping shape components as the brand undergoes a visual refresh.",
         noCols: true,
         breakImage: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661554/portfolio/Auth0_Example01.png",
         breakVideo2: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661686/portfolio/Auth0_Retail_01.mp4",
@@ -95,7 +95,11 @@ export const projects: Project[] = [
       },
       {
         heading: "Animated product graphics",
-        body: "Built animated product graphics that let users explore Okta's platform in a hands-on way.",
+        body: "At Okta, I lead the animation for product graphics that are used throughout our websites. This includes following our brand motion guidelines when setting up animated scenes and translating complex product concepts into clear, engaging visual moments for web, campaigns, and reports.",
+        link: "https://www.okta.com/solutions/secure-ai/",
+        linkLabel: "Okta Secures AI",
+        link2: "https://www.okta.com/en-ca/reports/businesses-at-work/",
+        linkLabel2: "Businesses at Work 2026",
         breakVideo: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661670/portfolio/Okta_Example02.mp4",
         noCols: true,
       },
@@ -152,19 +156,22 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Ads",
-        body: "I tested how quickly ads revealed the product mattered as much as how they looked. In Studeo's highest-performing month, 22% of ads showed the product within the first six seconds, compared to just 2% in lower-performing months. The best-performing creatives consistently balanced messaging across the funnel, which closely tracked with the number of deals closed each month.",
+        body: "Led creative direction for Studeo's paid campaigns targeting top-performing luxury real estate agents. I helped develop a full-funnel framework pairing strong hooks with early product visibility, which became a key driver of our best-performing month ever with over $500K in ad revenue.",
+        link: "/work/studeo-paid-ads",
+        linkLabel: "View full case study",
         image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661585/portfolio/StudeoAds_1.png",
         breakImage: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661583/portfolio/StudeoAds_2.png",
+        breakImageCaption: "Ad campaign for Studeo AI's voice agent integration",
       },
       {
         heading: "Landing Pages & Explainer Video",
         video: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661703/portfolio/StudeoMotion_01.mp4",
         breakVideo: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661720/portfolio/StudeoMotion_02.mp4",
-        body: "I designed 10+ landing pages and led the creation of 3+ explainer videos, including the flagship video that launched alongside Studeo's new website. That video became the most-clicked, most-interacted-with element on the site — engaging 34% of 22.4K visitors (~7,600 plays) — and was later repurposed into short-form ad content to drive additional lead volume. It clarified Studeo's platform around three core customer pain points: winning listings, standing out, and selling faster.",
+        body: "I designed 10+ landing pages and led the creation of 3+ explainer videos, including the flagship video that launched alongside Studeo's new website. That video became the most-clicked, most-interacted-with element on the site, engaging 34% of 22.4K visitors (~7,600 plays), and was later repurposed into short-form ad content to drive additional lead volume. It clarified Studeo's platform around three core customer pain points: winning listings, standing out, and selling faster.",
       },
       {
         heading: "Website Revamp",
-        body: "I led the full visual and animated redesign of Studeo's website, rethinking both the design and the user journey from landing to demo booking. After launch, demo bookings increased by 50%, with 1 in 3 visitors booking directly from the site — with zero intervention from the sales team.",
+        body: "I led the full visual and animated redesign of Studeo's website, rethinking both the design and the user journey from landing to demo booking. After launch, demo bookings increased by 50%, with 1 in 3 visitors booking directly from the site, with zero intervention from the sales team.",
         image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661586/portfolio/StudeoWeb_1.png",
         breakVideo: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661720/portfolio/StudeoWeb_02.mp4",
       },
