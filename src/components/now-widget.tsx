@@ -21,7 +21,7 @@ export function NowWidget() {
 
   return (
     <div className="space-y-5">
-      <div className="relative w-full overflow-hidden rounded-[6px] aspect-[4/3] cursor-pointer group/headshot">
+      <div className="relative w-full overflow-hidden rounded-[12px] aspect-[4/3] cursor-pointer group/headshot">
         <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661550/portfolio/About01_Static.png" alt="Milena Kostyukov" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover/headshot:opacity-0" />
         <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661548/portfolio/About01_Hover.png" alt="Milena Kostyukov" className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out group-hover/headshot:opacity-100" />
       </div>

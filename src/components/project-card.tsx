@@ -17,7 +17,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     >
       <Link to="/work/$slug" params={{ slug: project.slug }} className="group block">
         <div
-          className="relative overflow-hidden rounded-3xl border border-border xl:min-h-[456px]"
+          className="relative overflow-hidden rounded-[12px] border border-border xl:min-h-[456px]"
           style={{
             backgroundColor: project.bg,
             backgroundImage: project.cardBg ? `url(${project.cardBg})` : undefined,
@@ -32,7 +32,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
                 <img
                   src={project.cardImageStacked ?? project.cardImage}
                   alt={project.title}
-                  className="w-full h-auto object-cover rounded-lg"
+                  className="w-full h-auto object-cover rounded-[12px]"
                 />
               </div>
             )}
