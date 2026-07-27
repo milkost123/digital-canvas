@@ -13,7 +13,12 @@ import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as ExplorationRouteImport } from './routes/exploration'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkStudeoPaidAdsRouteImport } from './routes/work.studeo-paid-ads'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
+import { Route as ExplorationVibeCodingRouteImport } from './routes/exploration_.vibe-coding'
+import { Route as ExplorationPrintRouteImport } from './routes/exploration_.print'
+import { Route as ExplorationMarketingRouteImport } from './routes/exploration_.marketing'
+import { Route as Exploration3dRouteImport } from './routes/exploration_.3d'
 
 const ResumeRoute = ResumeRouteImport.update({
   id: '/resume',
@@ -35,9 +40,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkStudeoPaidAdsRoute = WorkStudeoPaidAdsRouteImport.update({
+  id: '/work/studeo-paid-ads',
+  path: '/work/studeo-paid-ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkSlugRoute = WorkSlugRouteImport.update({
   id: '/work/$slug',
   path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExplorationVibeCodingRoute = ExplorationVibeCodingRouteImport.update({
+  id: '/exploration_/vibe-coding',
+  path: '/exploration/vibe-coding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExplorationPrintRoute = ExplorationPrintRouteImport.update({
+  id: '/exploration_/print',
+  path: '/exploration/print',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExplorationMarketingRoute = ExplorationMarketingRouteImport.update({
+  id: '/exploration_/marketing',
+  path: '/exploration/marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Exploration3dRoute = Exploration3dRouteImport.update({
+  id: '/exploration_/3d',
+  path: '/exploration/3d',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -46,14 +76,24 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/exploration': typeof ExplorationRoute
   '/resume': typeof ResumeRoute
+  '/exploration/3d': typeof Exploration3dRoute
+  '/exploration/marketing': typeof ExplorationMarketingRoute
+  '/exploration/print': typeof ExplorationPrintRoute
+  '/exploration/vibe-coding': typeof ExplorationVibeCodingRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/studeo-paid-ads': typeof WorkStudeoPaidAdsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/exploration': typeof ExplorationRoute
   '/resume': typeof ResumeRoute
+  '/exploration/3d': typeof Exploration3dRoute
+  '/exploration/marketing': typeof ExplorationMarketingRoute
+  '/exploration/print': typeof ExplorationPrintRoute
+  '/exploration/vibe-coding': typeof ExplorationVibeCodingRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/studeo-paid-ads': typeof WorkStudeoPaidAdsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,14 +101,50 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/exploration': typeof ExplorationRoute
   '/resume': typeof ResumeRoute
+  '/exploration_/3d': typeof Exploration3dRoute
+  '/exploration_/marketing': typeof ExplorationMarketingRoute
+  '/exploration_/print': typeof ExplorationPrintRoute
+  '/exploration_/vibe-coding': typeof ExplorationVibeCodingRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/studeo-paid-ads': typeof WorkStudeoPaidAdsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/exploration' | '/resume' | '/work/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/exploration'
+    | '/resume'
+    | '/exploration/3d'
+    | '/exploration/marketing'
+    | '/exploration/print'
+    | '/exploration/vibe-coding'
+    | '/work/$slug'
+    | '/work/studeo-paid-ads'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/exploration' | '/resume' | '/work/$slug'
-  id: '__root__' | '/' | '/about' | '/exploration' | '/resume' | '/work/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/exploration'
+    | '/resume'
+    | '/exploration/3d'
+    | '/exploration/marketing'
+    | '/exploration/print'
+    | '/exploration/vibe-coding'
+    | '/work/$slug'
+    | '/work/studeo-paid-ads'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/exploration'
+    | '/resume'
+    | '/exploration_/3d'
+    | '/exploration_/marketing'
+    | '/exploration_/print'
+    | '/exploration_/vibe-coding'
+    | '/work/$slug'
+    | '/work/studeo-paid-ads'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,7 +152,12 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ExplorationRoute: typeof ExplorationRoute
   ResumeRoute: typeof ResumeRoute
+  Exploration3dRoute: typeof Exploration3dRoute
+  ExplorationMarketingRoute: typeof ExplorationMarketingRoute
+  ExplorationPrintRoute: typeof ExplorationPrintRoute
+  ExplorationVibeCodingRoute: typeof ExplorationVibeCodingRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  WorkStudeoPaidAdsRoute: typeof WorkStudeoPaidAdsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -109,11 +190,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/studeo-paid-ads': {
+      id: '/work/studeo-paid-ads'
+      path: '/work/studeo-paid-ads'
+      fullPath: '/work/studeo-paid-ads'
+      preLoaderRoute: typeof WorkStudeoPaidAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/$slug': {
       id: '/work/$slug'
       path: '/work/$slug'
       fullPath: '/work/$slug'
       preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exploration_/vibe-coding': {
+      id: '/exploration_/vibe-coding'
+      path: '/exploration/vibe-coding'
+      fullPath: '/exploration/vibe-coding'
+      preLoaderRoute: typeof ExplorationVibeCodingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exploration_/print': {
+      id: '/exploration_/print'
+      path: '/exploration/print'
+      fullPath: '/exploration/print'
+      preLoaderRoute: typeof ExplorationPrintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exploration_/marketing': {
+      id: '/exploration_/marketing'
+      path: '/exploration/marketing'
+      fullPath: '/exploration/marketing'
+      preLoaderRoute: typeof ExplorationMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exploration_/3d': {
+      id: '/exploration_/3d'
+      path: '/exploration/3d'
+      fullPath: '/exploration/3d'
+      preLoaderRoute: typeof Exploration3dRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -124,7 +240,12 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ExplorationRoute: ExplorationRoute,
   ResumeRoute: ResumeRoute,
+  Exploration3dRoute: Exploration3dRoute,
+  ExplorationMarketingRoute: ExplorationMarketingRoute,
+  ExplorationPrintRoute: ExplorationPrintRoute,
+  ExplorationVibeCodingRoute: ExplorationVibeCodingRoute,
   WorkSlugRoute: WorkSlugRoute,
+  WorkStudeoPaidAdsRoute: WorkStudeoPaidAdsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
