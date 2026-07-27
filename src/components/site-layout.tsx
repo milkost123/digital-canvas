@@ -8,6 +8,7 @@ import { ScrambleText } from "@/components/scramble-text";
 
 const NAV = [
   { to: "/", label: "Work", match: ["/", "/work"] },
+  { to: "/exploration", label: "Exploration", match: ["/exploration"] },
   { to: "/about", label: "About", match: ["/about"] },
   { to: "/resume", label: "Resume", match: ["/resume"] },
 ] as const;

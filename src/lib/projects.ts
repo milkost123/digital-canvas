@@ -18,8 +18,11 @@ export type Project = {
   stats?: { value: string; label: string }[];
   statGroups?: { title: string; stats: { value: string; label: string }[] }[];
   hideStatGroups?: boolean;
+  overview?: string;
+  endImage?: string;
+  endImageCaption?: string;
   narrative: string;
-  sections: { heading: string; body: string; link?: string; linkLabel?: string; link2?: string; linkLabel2?: string; image?: string; imageCaption?: string; video?: string; cardPreview?: boolean; flipCols?: boolean; breakImage?: string; breakImageCaption?: string; breakImage2?: string; breakVideo?: string; breakVideo2?: string; breakVideo3?: string; breakImage3?: string; breakImage4?: string; breakPlaceholders?: number; breakSplit?: boolean; breakSideBySide?: boolean; breakGrid3?: boolean; breakTop?: boolean; noCols?: boolean }[];
+  sections: { heading: string; body: string; link?: string; linkLabel?: string; link2?: string; linkLabel2?: string; image?: string; imageCaption?: string; video?: string; cardPreview?: boolean; flipCols?: boolean; breakImage?: string; breakImageCaption?: string; breakImage2?: string; breakVideo?: string; breakVideo2?: string; breakVideo3?: string; breakImage3?: string; breakImage4?: string; breakPlaceholders?: number; breakSplit?: boolean; breakSideBySide?: boolean; breakSideBySide2?: boolean; breakSideBySide2Caption?: string; breakGrid3?: boolean; breakTop?: boolean; breakSlides?: string[]; noCols?: boolean; tightTop?: boolean }[];
 };
 
 export const projects: Project[] = [
@@ -108,6 +111,8 @@ export const projects: Project[] = [
         body: "Designed and built a 3D object rendering export tool using Claude Code to turn our values icons into animated 3D renders that were used in our new Company page.",
         link: "https://www.okta.com/company/",
         linkLabel: "Company page",
+        link2: "/exploration/vibe-coding",
+        linkLabel2: "Learn more about the tool",
         image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661583/portfolio/Okta_Icons_02.png",
         flipCols: true,
         breakVideo: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661674/portfolio/Okta_Example01.mp4",
@@ -164,25 +169,42 @@ export const projects: Project[] = [
         breakImageCaption: "Ad campaign for Studeo AI's voice agent integration",
       },
       {
-        heading: "Landing Pages & Explainer Video",
+        heading: "Product videos",
         video: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661703/portfolio/StudeoMotion_01.mp4",
         breakVideo: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661720/portfolio/StudeoMotion_02.mp4",
-        body: "I designed 10+ landing pages and led the creation of 3+ explainer videos, including the flagship video that launched alongside Studeo's new website. That video became the most-clicked, most-interacted-with element on the site, engaging 34% of 22.4K visitors (~7,600 plays), and was later repurposed into short-form ad content to drive additional lead volume. It clarified Studeo's platform around three core customer pain points: winning listings, standing out, and selling faster.",
+        body: "Led the creation of 3+ explainer videos, including the flagship video that launched alongside Studeo's new website. That video became the most-clicked, most-interacted-with element on the site, engaging 34% of 22.4K visitors (~7,600 plays), and was later repurposed into short-form ad content to drive additional lead volume. It clarified Studeo's platform around three core customer pain points: winning listings, standing out, and selling faster.",
       },
       {
         heading: "Website Revamp",
         body: "I led the full visual and animated redesign of Studeo's website, rethinking both the design and the user journey from landing to demo booking. After launch, demo bookings increased by 50%, with 1 in 3 visitors booking directly from the site, with zero intervention from the sales team.",
+        link: "https://studeo.ai/solutions/storybook",
+        linkLabel: "What is a Storybook?",
         image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661586/portfolio/StudeoWeb_1.png",
         breakVideo: "https://res.cloudinary.com/dxi9ogwbq/video/upload/v1783661720/portfolio/StudeoWeb_02.mp4",
+      },
+      {
+        heading: "Brand refresh",
+        body: "Led a full visual refresh of Studeo's brand as the company sharpened its focus on real estate, aiming to feel creative and AI-powered while staying grounded in trust.\n\n• Designed new textures, patterns, and gradients, testing circular, geometric, and organic forms to find the right tone\n\n• Landed on a warmer, more organic direction: soft circles, floral-inspired shapes, rounded home icons, and subtle sparkle details",
+        image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127977/Studeo-BrandRefresh-01_teti4f.png",
+      },
+      {
+        heading: "Icon system",
+        body: "• Replaced the brand's original icon set, which felt rigid, with a playful, expanded system covering real estate, marketing, and sales concepts\n\n• Designed the icons to double as background patterns, so the same visual language shows up across ads, social, blog, and print\n\nThe result: a more vibrant, cohesive brand system that scales faster, with templated social assets keeping things consistent",
+        image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127978/Studeo-BrandRefresh-04_oopljw.png",
+        breakTop: true,
+        breakSlides: ["https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127977/Studeo-BrandRefresh-02_t4tweo.png", "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127978/Studeo-BrandRefresh-03_pgxmf5.png"],
+        tightTop: true,
       },
     ],
   },
   {
     slug: "malleable-founding",
+    endImage: "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127976/Malleable_ProductHunt_Banner_baaiao.png",
+    endImageCaption: "Product Hunt promotional imagery",
     title: "Co-pilot for sales teams",
     tagline: "Built Malleable's entire design foundation in under a year: product, brand, and web from zero",
     tags: ["Founding Design"],
-    role: "Founding Designer — product, web, brand",
+    role: "Founding Designer",
     tools: "Figma, Framer, After Effects",
     team: "CEO, Product Designer",
     timeline: "2024 — 2025",
@@ -196,19 +218,35 @@ export const projects: Project[] = [
       { value: "12", label: "enterprise pilots" },
     ],
     narrative:
-      "Built Malleable's entire design foundation in under a year: product, brand, and web from zero.",
+      "As founding designer, I shaped Malleable's entire visual experience: product design, web presence, motion, and marketing, from the ground up as a bootstrapped SaaS startup.",
+    overview: "RevOps and SalesOps leaders were drowning in siloed data, manual admin work, and prospecting tools that ate up more time than they saved. Malleable set out to fix that.",
     sections: [
       {
         heading: "Product design",
-        body: "Designed the core product experience for Malleable's AI co-pilot, from onboarding to daily workflows.",
+        body: "• Built wireframes through rapid design cycles, adapting as market demands shifted\n\n• Managed a product designer to keep UX/UI aligned with our vision\n\n• Ran beta testing with target users and worked directly with developers on technical feasibility\n\n• Created a scalable design system and prioritized key MVP features for testing with new users",
         image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661564/portfolio/Malleable_Example02.png",
+        breakSlides: ["https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127976/Malleable_UI_01_aqeeup.png", "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127977/Malleable_UXExample01_jcsj9q.png", "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127977/Malleable_UI_03_nkrgf1.png"],
       },
       {
-        heading: "Brand & web",
-        body: "Built the brand and web presence from scratch, establishing a visual language that resonated with enterprise sales teams.",
+        heading: "Website",
+        body: "I designed a high-impact website to clearly communicate Malleable's value proposition. This meant testing multiple messaging strategies, tracking where visitors dropped off, and iterating fast. I built smooth micro-interactions and custom interactive components throughout, and produced a motion explainer video for the hero section to give visitors a quick, clear demo of the product.",
         noCols: true,
         breakImage: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661559/portfolio/Malleable_Example01.png",
         breakImage2: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661580/portfolio/Malleable_Example03.png",
+      },
+      {
+        heading: "Marketing and growth",
+        body: "Alongside our marketing agency, I helped run organic and paid campaigns, including a Product Hunt launch and LinkedIn ads to build early interest. I also tracked competitor ad activity to spot features and positioning that could shape our own roadmap. This became a real testing ground: lots of experimentation to see what actually worked.",
+        noCols: true,
+        breakSideBySide2: true,
+        breakImage3: "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127975/Malleable_AdExample01_hp18es.png",
+        breakImage4: "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127976/Malleable_AdExample02_d5lj2n.png",
+        breakSideBySide2Caption: "Ad campaign promoting Malleable's core features: Connect, Enrich, and Scrape",
+      },
+      {
+        heading: "Results",
+        body: "Working on Malleable meant long nights and close collaboration, but it taught me real lessons in sales, marketing, and product strategy, and pushed me to think about how design actually supports business goals. The launch was a success: 150 waitlist signups in under two months, and 100 active users at launch.",
+        noCols: true,
       },
     ],
   },

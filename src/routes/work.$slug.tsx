@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowLeft } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { SiteLayout } from "@/components/site-layout";
 import { getNextProject, getProject, projects } from "@/lib/projects";
 
@@ -56,6 +56,32 @@ function FadeIn({ children, className, delay = 0 }: { children: ReactNode; class
     >
       {children}
     </motion.div>
+  );
+}
+
+function Slideshow({ slides }: { slides: string[] }) {
+  const [index, setIndex] = useState(0);
+  const prev = () => setIndex(i => (i - 1 + slides.length) % slides.length);
+  const next = () => setIndex(i => (i + 1) % slides.length);
+  return (
+    <div className="relative w-full overflow-hidden rounded-[12px] group">
+      <img src={slides[index]} alt="" className="w-full h-auto block" />
+      <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60">
+        <ArrowLeft className="h-4 w-4" />
+      </button>
+      <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60">
+        <ArrowRight className="h-4 w-4" />
+      </button>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-4 bg-white" : "w-1.5 bg-white/50"}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -210,17 +236,26 @@ function WorkDetail() {
           </div>
         )}
 
+        {/* Overview statement */}
+        {project.overview && (
+          <FadeIn>
+            <p className="mt-12 font-display text-[40px] leading-snug tracking-tight lg:mt-16">{project.overview}</p>
+          </FadeIn>
+        )}
+
         {/* Content sections */}
         <div className="mt-12 space-y-12 lg:mt-20 lg:space-y-20">
           {project.sections.map((s, i) => (
-            <FadeInSection key={s.heading}>
+            <FadeInSection key={s.heading} className={s.tightTop ? "-mt-8 lg:-mt-12" : undefined}>
               {/* Full-width copy (no col grid) */}
               {s.noCols ? (
                 <div className="mb-6">
                   <h3 className="font-display text-2xl tracking-tight sm:text-3xl">{s.heading}</h3>
-                  {s.body.split("\n\n").map((para, pi) => (
-                    <p key={pi} className="mt-4 text-lg leading-relaxed text-foreground/80">{para}</p>
-                  ))}
+                  {s.body.split("\n\n").map((para, pi) =>
+                    para.startsWith("• ")
+                      ? <p key={pi} className="mt-2 flex gap-2 text-lg leading-relaxed text-foreground/80"><span aria-hidden>•</span><span>{para.slice(2)}</span></p>
+                      : <p key={pi} className="mt-4 text-lg leading-relaxed text-foreground/80">{para}</p>
+                  )}
                   {(s.link || s.link2) && (
                     <div className="mt-4 flex flex-row gap-2">
                       {s.link && (
@@ -238,11 +273,17 @@ function WorkDetail() {
                 </div>
               ) : null}
               {/* Break media above col layout when breakTop is set */}
-              {s.breakTop && (s.breakImage || s.breakVideo) && (
-                <div className="mb-6 overflow-hidden rounded-[12px]">
-                  {s.breakVideo
-                    ? <video src={s.breakVideo} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
-                    : <img src={s.breakImage} alt="" className="w-full h-auto block" />}
+              {s.breakTop && (
+                <div className="mb-6">
+                  {s.breakSlides
+                    ? <Slideshow slides={s.breakSlides} />
+                    : <div className="overflow-hidden rounded-[12px]">
+                        {s.breakVideo
+                          ? <video src={s.breakVideo} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
+                          : s.breakImage
+                            ? <img src={s.breakImage} alt="" className="w-full h-auto block" />
+                            : <div className="aspect-[16/8] w-full bg-placeholder" />}
+                      </div>}
                 </div>
               )}
               {/* Copy + section image: side-by-side on desktop, copy→image on mobile */}
@@ -264,9 +305,11 @@ function WorkDetail() {
                 </div>
                 <div className={`order-first ${(s.flipCols ? i % 2 === 0 : i % 2 === 1) ? "lg:order-1" : "lg:order-none"}`}>
                   <h3 className="font-display text-2xl tracking-tight sm:text-3xl">{s.heading}</h3>
-                  {s.body.split("\n\n").map((para, pi) => (
-                    <p key={pi} className="mt-4 text-lg leading-relaxed text-foreground/80">{para}</p>
-                  ))}
+                  {s.body.split("\n\n").map((para, pi) =>
+                    para.startsWith("• ")
+                      ? <p key={pi} className="mt-2 flex gap-2 text-lg leading-relaxed text-foreground/80"><span aria-hidden>•</span><span>{para.slice(2)}</span></p>
+                      : <p key={pi} className="mt-4 text-lg leading-relaxed text-foreground/80">{para}</p>
+                  )}
                   {(s.link || s.link2) && (
                     <div className="mt-4 flex flex-row gap-2">
                       {s.link && (
@@ -349,6 +392,11 @@ function WorkDetail() {
                       </div>
                     </div>
                   )}
+                  {!s.breakTop && s.breakSlides && (
+                    <div className="mt-4">
+                      <Slideshow slides={s.breakSlides} />
+                    </div>
+                  )}
                   {!s.breakSideBySide && !s.breakTop && (s.breakImage || s.breakVideo) && (
                     <div className="mt-4">
                       <div className="overflow-hidden rounded-[12px]">
@@ -374,11 +422,42 @@ function WorkDetail() {
                   {s.breakPlaceholders && Array.from({ length: s.breakPlaceholders }).map((_, pi) => (
                     <div key={pi} className="mt-4 aspect-[16/8] w-full rounded-[12px] bg-placeholder" />
                   ))}
+                  {s.breakSideBySide2 && (
+                    <div className="mt-4">
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-[65fr_35fr] sm:items-stretch">
+                        <div className="overflow-hidden rounded-[12px]">
+                          {s.breakImage3
+                            ? <img src={s.breakImage3} alt="" className="w-full h-auto block" />
+                            : <div className="aspect-[4/3] w-full bg-placeholder" />}
+                        </div>
+                        <div className="overflow-hidden rounded-[12px] sm:self-stretch">
+                          {s.breakImage4
+                            ? <img src={s.breakImage4} alt="" className="w-full h-full object-cover block" />
+                            : <div className="w-full h-full bg-placeholder" />}
+                        </div>
+                      </div>
+                      {s.breakSideBySide2Caption && (
+                        <p className="mt-2 label-mono text-foreground/50">{s.breakSideBySide2Caption}</p>
+                      )}
+                    </div>
+                  )}
                 </>
               )}
             </FadeInSection>
           ))}
         </div>
+
+        {/* End image */}
+        {project.endImage && (
+          <div className="mt-6">
+            <div className="overflow-hidden rounded-[12px]">
+              <img src={project.endImage} alt="" className="w-full h-auto block" />
+            </div>
+            {project.endImageCaption && (
+              <p className="mt-2 label-mono text-foreground/50">{project.endImageCaption}</p>
+            )}
+          </div>
+        )}
 
         {/* Next */}
         <FadeIn>
