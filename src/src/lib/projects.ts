@@ -225,7 +225,7 @@ export const projects: Project[] = [
         heading: "Product design",
         body: "• Built wireframes through rapid design cycles, adapting as market demands shifted\n\n• Managed a product designer to keep UX/UI aligned with our vision\n\n• Ran beta testing with target users and worked directly with developers on technical feasibility\n\n• Created a scalable design system and prioritized key MVP features for testing with new users",
         image: "https://res.cloudinary.com/dxi9ogwbq/image/upload/f_auto,q_auto/v1783661564/portfolio/Malleable_Example02.png",
-        breakSlides: ["https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127976/Malleable_UI_01_aqeeup.png", "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127977/Malleable_UXExample01_jcsj9q.png", "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127977/Malleable_UI_03_nkrgf1.png"],
+        breakSlides: ["https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127976/Malleable_UI_01_aqeeup.png", "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785160631/Malleable_UI_02_uunpli.png", "https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127977/Malleable_UI_03_nkrgf1.png"],
       },
       {
         heading: "Website",
