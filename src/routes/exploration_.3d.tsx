@@ -101,7 +101,16 @@ function ThreeD() {
             <p className="mt-4 text-lg leading-relaxed text-foreground/80">Breathe Deeply was my first project incorporating 3D design. I taught myself how to model and animate each scene, including soft-body animation, which proved to be the most time-consuming and technically demanding part of the project. I built smaller practice scenes and worked through tutorials to build the skill before tackling the real thing, though the learning curve pushed my original timeline.</p>
             <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127974/breathe-deeply-03_u8abez.png" alt="" className="mt-6 w-full h-auto rounded-[12px]" />
             <img src="https://res.cloudinary.com/dxi9ogwbq/image/upload/v1785127974/breathe-deeply-04_nlhie1.png" alt="" className="mt-4 w-full h-auto rounded-[12px]" />
+            <div className="mt-4 w-full aspect-video rounded-[12px] overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/te2suX2kGag?autoplay=1&mute=1&loop=1&playlist=te2suX2kGag&controls=1&rel=0&disablekb=1&modestbranding=1"
+                className="w-full h-full"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+              />
+            </div>
           </FadeInSection>
+
 
         </div>
       </article>
