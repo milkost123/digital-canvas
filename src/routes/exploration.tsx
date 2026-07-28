@@ -26,7 +26,7 @@ function Exploration() {
       <div className="px-5 pb-32 pt-6 sm:px-10 lg:px-14 lg:pt-10">
         <header>
           <span className="label-mono text-muted-foreground">Side quests</span>
-          <h1 className="mt-3 font-display text-5xl font-medium leading-[1.02] tracking-tight sm:text-6xl">
+          <h1 className="mt-3 font-display text-5xl leading-[1.02] tracking-tight sm:text-6xl">
             Exploration
           </h1>
           <p className="mt-5 text-lg text-foreground/75 sm:text-xl">

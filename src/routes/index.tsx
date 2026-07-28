@@ -148,15 +148,16 @@ function Index() {
     <SiteLayout>
       <div className="mx-auto max-w-6xl px-4 pb-24 pt-12 lg:px-6 lg:pt-20 lg:pb-8">
         {/* Intro */}
-        <section className="mb-14 animate-rise">
+        <section className="mb-14 lg:mb-6 animate-rise group">
           <motion.h2
-            className="font-display text-4xl leading-[1.05] tracking-tight sm:text-[3.4rem] lg:text-[4rem]"
+            className="font-display text-[2.9rem] leading-[1.1] tracking-tight sm:text-[3.4rem] lg:text-[4rem]"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            Digital designer, animator, and builder of interactive things — shaping products from startup to enterprise
+            Digital designer, animator, and builder of interactive things, shaping products from startup to enterprise
           </motion.h2>
+          <p className="hidden lg:block mt-3 text-sm text-foreground/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">(and queen of run-on sentences)</p>
         </section>
 
         {/* Work section */}
